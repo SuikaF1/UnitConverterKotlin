@@ -70,11 +70,18 @@ enum class LengthUnit(
             return NOT_LENGTH
         }
 
-        fun getLengthUnitConversion(
+        private fun getConversion(
             unitAmount: Double,
             unit1: LengthUnit,
             unit2: LengthUnit = METER
         ): Double =
             (unitAmount * unit1.unitToMeters) / unit2.unitToMeters
+
+        fun printConversion(length: Double, lengthUnit: LengthUnit, lengthUnitTwo: LengthUnit) {
+            val conversion = getConversion(length, lengthUnit, lengthUnitTwo)
+            println(
+                "$length ${lengthUnit.getPluralOrSingular(length)} is $conversion ${lengthUnitTwo.getPluralOrSingular(conversion)}"
+            )
+        }
     }
 }

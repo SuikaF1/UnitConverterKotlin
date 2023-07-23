@@ -55,7 +55,13 @@ enum class WeightUnit(
             return NOT_WEIGHT
         }
 
-        fun getWeightUnitConversion(weight: Double, weightUnit: WeightUnit, weightUnitTwo: WeightUnit): Double =
+        private fun getWeightUnitConversion(weight: Double, weightUnit: WeightUnit, weightUnitTwo: WeightUnit): Double =
             (weight * weightUnit.unitToGrams) / weightUnitTwo.unitToGrams
+        fun printWeightConversion(weight: Double, weightUnit: WeightUnit, weightUnitTwo: WeightUnit) {
+            val conversion = WeightUnit.getWeightUnitConversion(weight, weightUnit, weightUnitTwo)
+            println(
+                "$weight ${weightUnit.getPluralOrSingular(weight)} is $conversion ${weightUnitTwo.getPluralOrSingular(conversion)}"
+            )
+        }
     }
 }
